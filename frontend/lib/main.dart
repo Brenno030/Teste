@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'screens/welcome.dart'; // Importe a nova tela
+import 'screens/login.dart'; // Importe a nova tela
 
 void main() {
   runApp(MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   // Função que testa a conexão com o backend
   Future<void> testarConexao() async {
     try {
-      final response = await http.get(Uri.parse('http://127.0.0.1:3000/user'));
+      final response = await http.get(Uri.parse('http://localhost:3000/user'));
 
       if (response.statusCode == 200) {
         print('✅ Conectado ao backend: ${response.body}');
@@ -38,7 +38,7 @@ void main() {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: WelcomeScreen(), // ✅ Tela de boas-vindas como inicial
+      home: LoginPage(), // ✅ Tela de boas-vindas como inicial
       debugShowCheckedModeBanner: false,
     );
   }

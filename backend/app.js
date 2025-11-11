@@ -1,26 +1,17 @@
-import express from "express";
-import cors from "cors";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import authRoutes from './routes/authRoutes.js'; // ← ajuste o caminho
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import authRoutes from './routes/auth.js';
 
-dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// conexão com banco
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB conectado 🚀"))
-  .catch(err => console.log(err));
+// Conecte ao MongoDB
+mongoose.connect('mongodb+srv://tecbala8_db_user:G9T5L7J1k4lQCLOt@cluster0.fs2ftam.mongodb.net/Tecbala')
+  .then(() => console.log('✅ Conectado ao MongoDB'))
+  .catch(err => console.error('Erro ao conectar ao MongoDB', err));
 
-// rotas
-// ✅ REGISTRE AS ROTAS - Esta linha está faltando!
-app.use('/auth', authRoutes); // ou app.use('/auth', authRoutes);
+app.use('/auth', authRoutes);
 
-// Rota de saúde para teste
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'API funcionando' });
-});
-
-app.listen(3000, () => console.log("API rodando na porta 3000 💪"));
+app.listen(3000, () => console.log('🚀 Servidor rodando na porta 3000'));
