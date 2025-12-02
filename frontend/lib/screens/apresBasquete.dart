@@ -14,7 +14,7 @@ class Apresbasquete extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFA8D6FF),
+      backgroundColor: const Color(0xFFFF994F),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,17 +29,17 @@ class Apresbasquete extends StatelessWidget {
                   height: 150,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      colors: [Color(0xFF00B4DB), Color(0xFF0083B0)],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
+                    // gradient: LinearGradient(
+                    //   colors: [Color(0xFF00B4DB), Color(0xFF0083B0)],
+                    //   begin: Alignment.topLeft,
+                    //   end: Alignment.bottomRight,
+                    // ),
                   ),
                   child: Center(
                     child: Image.asset(
                       'lib/assets/basquete.png',
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 150,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -51,7 +51,7 @@ class Apresbasquete extends StatelessWidget {
                 const Text(
                   'Basquete',
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.black54,
                   ),
@@ -66,7 +66,7 @@ class Apresbasquete extends StatelessWidget {
                   child: Text(
                     'Velocidade, explosão e controle. Um jogo\n de intensidade e inteligência em cada\n lance.',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 18,
                       color: Colors.black87,
                       height: 1.4,
                     ),
@@ -76,49 +76,57 @@ class Apresbasquete extends StatelessWidget {
               ],
             ),
               const SizedBox(height: 40),
-           // Botões
+           // Botões (Modificado conforme a imagem)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, // Botão voltar à esquerda
+                crossAxisAlignment: CrossAxisAlignment.stretch, // Para o botão Avançar ocupar a largura total
                 children: [
-                  // Botão Avançar (centralizado)
-                  Center(
-                    child: ElevatedButton(
-                      onPressed: () => _goToApresentacao(context),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                  // Botão Avançar (estilo da imagem)
+                  ElevatedButton(
+                    onPressed: () => _goToApresentacao(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF3F51B5), // Azul escuro
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), // Cantos arredondados
                       ),
-                      child: const Text(
-                        'Avançar',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
+                      elevation: 8, // Sombra
+                    ),
+                    child: const Text(
+                      'Avançar',
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
 
-                  const SizedBox(height: 10), // Espaço entre os botões
+                  const SizedBox(height: 20), // Espaço entre os botões
 
-                  // Botão Voltar
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context); // Volta para a tela anterior
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  // Botão Voltar (estilo da imagem: texto simples com sombra)
+                  Align(
+                    alignment: Alignment.centerLeft, // Alinhado à esquerda dentro do Padding
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context); // Volta para a tela anterior
+                      },
+                      style: TextButton.styleFrom(
+                        foregroundColor: const Color(0xFF3F51B5), // Cor do texto Voltar
+                        padding: EdgeInsets.zero,
                       ),
-                    ),
-                    child: const Text(
-                      'Voltar',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      child: const Text(
+                        'Voltar',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 4.0,
+                              color: Colors.black26,
+                              offset: Offset(1.0, 1.0),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],

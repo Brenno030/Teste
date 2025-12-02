@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 class AuthService {
   // Endereço base do seu backend Node.js
   // No emulador Android, use "10.0.2.2"
-  final String baseUrl = 'http://localhost:3000/auth';
+final String baseUrl = 'http://192.168.1.7:3000/auth';
 
   // Função de login que envia o email e senha para o backend
   Future<bool> login(String email, String senha) async {

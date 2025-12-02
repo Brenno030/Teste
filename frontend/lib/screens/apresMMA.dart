@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meu_app/screens/apresMMA.dart'; // Substitua pela próxima tela real
+import 'package:meu_app/screens/sport_selection_screen.dart'; // Substitua pela próxima tela real
 
 class ApresMMA extends StatelessWidget {
   const ApresMMA({super.key});
@@ -7,14 +7,14 @@ class ApresMMA extends StatelessWidget {
   void _goToApresentacao(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const ApresMMA()), // Próxima tela
+      MaterialPageRoute(builder: (context) => const SportSelectionScreen()), // Próxima tela
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFA8D6FF),
+      backgroundColor: const Color(0xFFFF5E5E),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,17 +29,17 @@ class ApresMMA extends StatelessWidget {
                   height: 150,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      colors: [Color(0xFF00B4DB), Color(0xFF0083B0)],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
+                    // gradient: LinearGradient(
+                    //   colors: [Color(0xFF00B4DB), Color(0xFF0083B0)],
+                    //   begin: Alignment.topLeft,
+                    //   end: Alignment.bottomRight,
+                    // ),
                   ),
                   child: Center(
                     child: Image.asset(
                       'lib/assets/mma.png',
-                      width: 100,
-                      height: 100,
+                      width: 170,
+                      height: 170,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -51,7 +51,7 @@ class ApresMMA extends StatelessWidget {
                 const Text(
                   'MMA',
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.black54,
                   ),
@@ -66,7 +66,7 @@ class ApresMMA extends StatelessWidget {
                   child: Text(
                     'Força, técnica e controle sob pressão.\nCombina múltiplas artes para dominar\ncada segundo do combate.',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 18,
                       color: Colors.black87,
                       height: 1.4,
                     ),
@@ -76,49 +76,57 @@ class ApresMMA extends StatelessWidget {
               ],
             ),
 
-            // Botões
+            // Botões (Modificado conforme a imagem)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, // Botão voltar à esquerda
+                crossAxisAlignment: CrossAxisAlignment.stretch, // Para o botão Avançar ocupar a largura total
                 children: [
-                  // Botão Avançar (centralizado)
-                  Center(
-                    child: ElevatedButton(
-                      onPressed: () => _goToApresentacao(context),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                  // Botão Avançar (estilo da imagem)
+                  ElevatedButton(
+                    onPressed: () => _goToApresentacao(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF3F51B5), // Azul escuro
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), // Cantos arredondados
                       ),
-                      child: const Text(
-                        'Avançar',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
+                      elevation: 8, // Sombra
+                    ),
+                    child: const Text(
+                      'Avançar',
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
 
-                  const SizedBox(height: 10), // Espaço entre os botões
+                  const SizedBox(height: 20), // Espaço entre os botões
 
-                  // Botão Voltar
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context); // Volta para a tela anterior
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  // Botão Voltar (estilo da imagem: texto simples com sombra)
+                  Align(
+                    alignment: Alignment.centerLeft, // Alinhado à esquerda dentro do Padding
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context); // Volta para a tela anterior
+                      },
+                      style: TextButton.styleFrom(
+                        foregroundColor: const Color(0xFF3F51B5), // Cor do texto Voltar
+                        padding: EdgeInsets.zero,
                       ),
-                    ),
-                    child: const Text(
-                      'Voltar',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      child: const Text(
+                        'Voltar',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 4.0,
+                              color: Colors.black26,
+                              offset: Offset(1.0, 1.0),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],

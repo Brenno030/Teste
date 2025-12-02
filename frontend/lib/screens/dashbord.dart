@@ -17,7 +17,7 @@ class _DashboardState extends State<Dashboard> {
   String userEmail = '';
   bool isLoading = true;
 
-final String baseurl = 'http://192.168.1.11:3000';
+final String baseurl = 'http://192.168.1.7:3000';
 
   @override
   void initState() {

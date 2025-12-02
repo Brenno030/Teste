@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isLogin = true; // false = cadastro, true = login
 
-  final String baseUrl = 'http://192.168.1.11:3000/auth';
+  final String baseUrl = 'http://192.168.1.7:3000/auth';
 
   Future<void> _authenticate() async {
     try {
